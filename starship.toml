@@ -1,0 +1,164 @@
+# disable the newline at the start of the prompt
+add_newline = false
+
+# $time\ was originally at the beginning, but dropping it for extra space
+# add/remove $line_break\ before $character\ to get prompt character on same line as prompt
+format = "$all"
+
+"$schema" = 'https://starship.rs/config-schema.json'
+# ~/.config/starship.toml
+
+[username]
+style_user = "purple bold"
+style_root = "black bold"
+format = "[$user]($style) in "
+disabled = false
+show_always = true
+
+
+# replace the prompt character
+[character]
+success_symbol = "[](bold purple)"
+error_symbol = "[](bold red)"
+vicmd_symbol = "[](bold purple)"
+
+# only show current directory name
+# remove directory, and make it blue
+[directory]
+truncation_length = 1
+style = "bright-blue"
+format = "[$path ]($style) [$read_only]($read_only_style)"
+
+[line_break]
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
+ 
+[[battery.display]]
+threshold = 80
+style = "bold green"
+
+[[battery.display]]
+threshold = 35
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 20
+style = "red"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[hostname]
+ssh_only = false
+format = "<[$hostname]($style)>"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = true
+
+[time]
+disabled = true
+style = "bright-black"
+time_format = "[%T] "
+format = "[$time]($style)"
+
+[git_branch]
+style = "purple"
+symbol = " "
+ignore_branches = ["master", "main"]
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "🔖 "
+format = '[\($hash$tag\)]($style) '
+style = "bold green"
+only_detached = true
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+revert = "[REVERTING](red)"
+merge = "[MERGING](green)"
+rebase = "[REBASING](bold green)"
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+up_to_date = "✓"
+untracked = "🤷"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "renamed"
+deleted = "🗑"
+
+[cmake]
+format = "via [$symbol($version )]($style)"
+symbol = "△ "
+style = "bold blue"
+detect_files = [".cpp-version"]
+
+[golang]
+style = "cyan"
+symbol = " "
+
+[nodejs]
+format = "via [$symbol($version )](bold green)"
+symbol = " "
+detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts"]
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+not_capable_style = "bold red"
+
+[lua]
+format = "via [🌙 $version](bold blue) "
+detect_files = [".lua-version"]
+detect_extensions = ["lua"]
+detect_folders = ["lua"]
+
+[package]
+format = "is [🎁 $version](208 bold) "
+
+[python]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = "bold yellow"
+pyenv_version_name = true
+python_binary = "python3"
+detect_extensions = ["py"]
+detect_files = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]
+symbol = " "
+
+[ruby]
+style = "bold red"
+symbol = " "
+
+[c]
+format = "via [$name $version]($style)"
+
+[rust]
+format = "via [$symbol($version )](red bold)"
+symbol = " "
+
+[shell]
+fish_indicator = "fsh"
+bash_indicator = "bsh"
+powershell_indicator = "psh"
+zsh_indicator = "zsh"
+unknown_indicator = "mystery shell"
+style = "cyan bold"
+disabled = false
+
+[sudo]
+style = "bold green"
+symbol = "💻 "
+disabled = false
+
+[swift]
+format = "via [🐦  $version](blue bold)"
+detect_extensions = ["swift"]
+detect_files = ["Package.swift"]
